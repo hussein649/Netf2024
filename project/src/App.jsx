@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Home from './Pages/Home/Home';
 
 
 function App() {
@@ -6,7 +7,7 @@ function App() {
 
   return (
     <>
-      <h1>Bismallah</h1>
+      <Home/>
     </>
   );
 }
