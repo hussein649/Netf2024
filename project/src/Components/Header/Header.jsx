@@ -7,13 +7,13 @@ import { IoMdArrowDropdown } from "react-icons/io";
        import { LuMenuSquare } from "react-icons/lu";
    
 const Header = () => {
-  const [show, setShow] = useState(true)
+  const [show, setShow] = useState(false)
   const toggle = () => (
     setShow(!show)
   )
   return (
     <>
-      <div className="bg-black text-white flex justify-between text-center py-6 px-10">
+      <div className="bg-black text-white text-xl flex justify-between text-center py-6 px-10">
         <div className="flex max-lg:inline-block  max-lg:justify-start text-left gap-4 max-lg:pt">
           <img src={logo} alt="Logo" className="h-10 " />
           {show ? (
@@ -45,8 +45,8 @@ const Header = () => {
                   onClick={toggle}
                   className="hidden max-lg:block mt-4"
                 />
-                <div className="hidden">
-                  <ul className=" flex gap-6 max-lg:inline-block mt-2">
+                <div className="block max-lg:hidden">
+                  <ul className=" flex gap-6 max-lg:inline-block text-left mt-2">
                     <li>Netflix</li>
                     <li>Home</li>
                     <li>TvShows</li>
