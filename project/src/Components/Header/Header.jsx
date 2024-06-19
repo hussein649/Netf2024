@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import logo from "../../assets/images/NetflixLogo.png"
 import { IoSearchSharp } from "react-icons/io5";
 import { IoMdNotifications } from "react-icons/io";
@@ -7,16 +7,35 @@ import { IoMdArrowDropdown } from "react-icons/io";
        import { LuMenuSquare } from "react-icons/lu";
    
 const Header = () => {
-  const [show, setShow] = useState(false)
+  const [visible, setVisible] = useState(false)
+
+   const [show, handleShow] = useState(false);
+   const transitionNavBar = () => {
+     if (window.scrollY > 100) {
+       handleShow(true);
+     } else {
+       handleShow(false);
+     }
+   };
+
+   useEffect(() => {
+     window.addEventListener("scroll", transitionNavBar);
+     return () => window.removeEventListener("scroll", transitionNavBar);
+   }, []);
+  
   const toggle = () => (
-    setShow(!show)
+    setVisible(!visible)
   )
   return (
     <>
-      <div className="bg-black text-white text-xl flex justify-between text-center py-6 px-10">
+      <div
+        className={` top-0 w-full fixed  text-white text-xl flex justify-between text-center py-2 px-10 ${
+          show && "bg-black"
+        }`}
+      >
         <div className="flex max-lg:inline-block  max-lg:justify-start text-left gap-4 max-lg:pt">
           <img src={logo} alt="Logo" className="h-10 " />
-          {show ? (
+          {visible? (
             <div>
               <button>
                 <LuMenuSquare
